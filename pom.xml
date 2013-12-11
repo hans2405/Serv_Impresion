@@ -22,7 +22,7 @@
             <configuration>
                     <archive>
                             <manifest>
-                                    <mainClass>com.corundumstudio.socketio.demo.EventChatLauncher</mainClass>
+                                    <mainClass>Presentacion.PControlPanel</mainClass>
                                     <addClasspath>true</addClasspath>
                                     <classpathPrefix>lib</classpathPrefix>
                             </manifest>
