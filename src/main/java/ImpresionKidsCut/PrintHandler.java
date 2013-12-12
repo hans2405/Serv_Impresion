@@ -61,7 +61,7 @@ public class PrintHandler{
         }
 
 	public static void ImprimirDocumento(){ 
-		String cadena=""; 
+		String cadena="";
 		for(int cabecera=0;cabecera<CabezaLineas.size();cabecera++ ){
 			cadena+=CabezaLineas.get(cabecera);
 		} 

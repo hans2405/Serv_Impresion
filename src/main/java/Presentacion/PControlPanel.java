@@ -24,7 +24,7 @@ public class PControlPanel extends javax.swing.JFrame {
     public PControlPanel() {
         initComponents();
         this.setSize(631, 355);
-        this.setTitle("serv_imp v11.12.2013");
+        this.setTitle("serv_imp v12.12.2013");
         jEstado.setText("Inactivo");
         jEstado.setOpaque(true);
         jEstado.setBackground(Color.RED);
