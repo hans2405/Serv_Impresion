@@ -145,21 +145,21 @@ public class FichaAtencion {
             }                        
         }
         PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
-        PrintHandler.AddSubCabecera(PrintHandler.ImprimirCentrado("Para una mejor atencion!!",dimLinea));
-        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
-        PrintHandler.AddSubCabecera(PrintHandler.ImprimirCentrado("Por Favor Facilitenos Estos Datos.", dimLinea));
-        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
-        PrintHandler.AddSubCabecera(PrintHandler.DibujarLinea(dimLinea));
-        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
-        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
-        PrintHandler.AddSubCabecera("Correo:______________________________");
-        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
-        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
-        PrintHandler.AddSubCabecera("#Carnet:_____________________________");
-        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
-        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
-        PrintHandler.AddSubCabecera("#Telefono:___________________________");
-        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
+//        PrintHandler.AddSubCabecera(PrintHandler.ImprimirCentrado("Para una mejor atencion!!",dimLinea));
+//        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
+//        PrintHandler.AddSubCabecera(PrintHandler.ImprimirCentrado("Por Favor Facilitenos Estos Datos.", dimLinea));
+//        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
+//        PrintHandler.AddSubCabecera(PrintHandler.DibujarLinea(dimLinea));
+//        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
+//        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
+//        PrintHandler.AddSubCabecera("Correo:______________________________");
+//        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
+//        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
+//        PrintHandler.AddSubCabecera("#Carnet:_____________________________");
+//        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
+//        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
+//        PrintHandler.AddSubCabecera("#Telefono:___________________________");
+//        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
 //        PrintHandler.AddSubCabecera(PrintHandler.DibujarLinea(dimLinea));
 //        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
         PrintHandler.AddSubCabecera(PrintHandler.PrepararCorte());

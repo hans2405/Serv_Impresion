@@ -46,6 +46,8 @@ public class PrintHandler{
 		result += PrintHandler.DarEspacio();
 		result += PrintHandler.DarEspacio();
 		result += PrintHandler.DarEspacio();
+		result += PrintHandler.DarEspacio();
+		result += PrintHandler.DarEspacio();
 		return result;
 	} 
         
