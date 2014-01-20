@@ -4,9 +4,6 @@
  */
 package ImpresionKidsCut;
 
-import java.util.AbstractList;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -38,7 +35,7 @@ public class FichaAtencion {
         this.descuentos = descuentos;
     }
     
-    public synchronized void imprimir(){
+    public synchronized String imprimir(){
         //------------IMPRESION PARA EL ADMINISTRADOR-----------------//
         PrintHandler.AddCabecera(PrintHandler.ImprimirCentrado("DATOS FICHA", 37));
         PrintHandler.AddCabecera(PrintHandler.DarEspacio());
@@ -145,6 +142,7 @@ public class FichaAtencion {
             }                        
         }
         PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
+        //-------------------Datos de la colilla del cliente-------------------
 //        PrintHandler.AddSubCabecera(PrintHandler.ImprimirCentrado("Para una mejor atencion!!",dimLinea));
 //        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
 //        PrintHandler.AddSubCabecera(PrintHandler.ImprimirCentrado("Por Favor Facilitenos Estos Datos.", dimLinea));
@@ -162,9 +160,10 @@ public class FichaAtencion {
 //        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
 //        PrintHandler.AddSubCabecera(PrintHandler.DibujarLinea(dimLinea));
 //        PrintHandler.AddSubCabecera(PrintHandler.DarEspacio());
+        //-------------------------------------------------------------------
         PrintHandler.AddSubCabecera(PrintHandler.PrepararCorte());
         PrintHandler.AddSubCabecera(PrintHandler.CortarPapel()); 
-        PrintHandler.ImprimirDocumento();
+        return PrintHandler.ImprimirDocumento();
     }
 
     /**

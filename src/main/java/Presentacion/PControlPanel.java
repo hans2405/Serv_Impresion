@@ -4,9 +4,15 @@
  */
 package Presentacion;
 
+import ImpresionKidsCut.Descuento;
+import ImpresionKidsCut.FichaAtencion;
+import ImpresionKidsCut.Servicio;
+import Logs_Sistema.Logs;
 import ServerSocket.ServerSocket;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.UIManager;
 import org.jvnet.substance.SubstanceLegacyDefaultLookAndFeel;
@@ -39,6 +45,22 @@ public class PControlPanel extends javax.swing.JFrame {
         jtxtConsola.setForeground(Color.BLACK);
         jtxtConsola.setBackground(Color.BLACK);
     }
+    
+    public static void liberarMemoria(){
+        try{ 
+                Runtime basurero = Runtime.getRuntime(); 
+                basurero.gc(); //Solicitando ... 
+        }catch(RuntimeException e){
+                Logs.escribirLog(Logs.ste2String(e.getStackTrace(), e, ""),3);
+        }
+        catch( Exception e ){
+                Logs.escribirLog(Logs.ste2String(e.getStackTrace(), e, ""),3);
+        }
+    }
+	
+    public static void mostrarMensaje(String mensaje){
+        jtxtConsola.insert(mensaje, 0);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,6 +78,7 @@ public class PControlPanel extends javax.swing.JFrame {
         jtxtConsola = new javax.swing.JTextArea();
         jbtnLimpiar = new javax.swing.JButton();
         jbtnIniciarParar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,29 +113,39 @@ public class PControlPanel extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Test de Impresion");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbtnIniciarParar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jbtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jEstadoTip, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 20, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(130, 130, 130)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1))))
                 .addContainerGap(48, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jbtnIniciarParar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jbtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jEstadoTip, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +161,9 @@ public class PControlPanel extends javax.swing.JFrame {
                         .addComponent(jEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -142,13 +177,13 @@ public class PControlPanel extends javax.swing.JFrame {
     private void jbtnIniciarPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIniciarPararActionPerformed
         // TODO add your handling code here:
         if (serverActivo) {
-            server.detenerServidor();
-            serverActivo = false;
-            jbtnIniciarParar.setText("Iniciar");
-            jEstado.setText("Inactivo");
-            jEstado.setBackground(Color.RED);
-            jEstado.setForeground(Color.BLACK);
-            
+            if (server.detenerServidor()) {
+                serverActivo = false;
+                jbtnIniciarParar.setText("Iniciar");
+                jEstado.setText("Inactivo");
+                jEstado.setBackground(Color.RED);
+                jEstado.setForeground(Color.BLACK);
+            }
         }else{
             if (server.iniciarServidor()) {
                 serverActivo = true;
@@ -159,6 +194,30 @@ public class PControlPanel extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jbtnIniciarPararActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ArrayList servicios = new ArrayList();
+        Servicio s = new Servicio("Servicio 1", "Empleado 1", "1", new ArrayList<Servicio>());
+        Servicio s2 = new Servicio("Servicio 2", "Empleado 2", "1", new ArrayList<Servicio>());
+        servicios.add(s);
+        servicios.add(s2);
+        
+        ArrayList descuentos = new ArrayList();
+        Descuento d = new Descuento("Descuento 1", "##", "1");
+        Descuento d2 = new Descuento("Descuento 2", "##", "1");
+        descuentos.add(d);
+        descuentos.add(d2);
+        
+        FichaAtencion fichaPrueba = new FichaAtencion("XX-XXX-XX-XXXXXX", "00:00:00", "Algun Cliente", "Algun Ninio", "Sucursal K#", 
+                servicios, descuentos);
+        String respuesta = fichaPrueba.imprimir();  
+        if (!respuesta.equals("ok")) {
+            jtxtConsola.append(respuesta+"\n\r");
+        }else{
+            jtxtConsola.append("------|Se imprimio la ficha de PRUEBA con codigo: "+fichaPrueba.getCodigoFicha()+"\n\r");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,12 +237,13 @@ public class PControlPanel extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jEstado;
     private javax.swing.JLabel jEstadoTip;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbtnIniciarParar;
     private javax.swing.JButton jbtnLimpiar;
-    public javax.swing.JTextArea jtxtConsola;
+    public static javax.swing.JTextArea jtxtConsola;
     // End of variables declaration//GEN-END:variables
 }
