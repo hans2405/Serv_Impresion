@@ -91,7 +91,7 @@ public class ServerSocket {
     
     public void enviarMensajeConsola(String mensaje){
         try {
-            frame.jtxtConsola.append(mensaje+"\n\r");
+            PControlPanel.jtxtConsola.append(mensaje+"\n\r");
             Logs.escribirLog("Mensaje en consola: "+mensaje, 1);            
         } catch (Exception e) {
             Logs.escribirLog(Logs.ste2String(e.getStackTrace(), e, "No fue posible mostrar el mensaje: "+mensaje+" en la consola"), 2);
